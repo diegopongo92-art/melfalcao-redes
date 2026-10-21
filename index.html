@@ -40,7 +40,7 @@ footer{margin-top:32px;font-size:12px;color:var(--mut)}
   <h1>Monitor de TikTok · <span>Mel Vilcahuaman</span></h1>
   <div class="sub" id="sub">Cargando…</div>
   <div class="st" id="st">Conectando con Google Sheets…</div>
-  <div class="f"><select id="fm"></select><select id="fc"></select><button id="rf">↻ Actualizar datos</button></div>
+  <div class="f"><select id="fm"></select><select id="fc"></select><button id="rf">↻ Actualizar datos</button><button id="lc" style="background:#fff;color:var(--g)" onclick="$('fl').click()">Cargar CSV</button><input type="file" id="fl" accept=".csv,text/csv" hidden></div>
  </div>
  <img id="cand" src="melfalcao.png" alt="Mel Vilcahuaman" onerror="this.style.display='none'">
 </div></div>
@@ -84,10 +84,13 @@ const top=(a,k,m=5)=>[...a].sort((x,y)=>y[k]-x[k]).slice(0,m);
 const filt=()=>D.filter(d=>(!st.c||d.cat==st.c)&&(!st.m||d.date.slice(0,7)==st.m));
 function setup(){const ms=[...new Set(D.map(d=>d.date.slice(0,7)))];$('fm').innerHTML='<option value="">Todos los meses</option>'+ms.map(m=>`<option value="${m}">${MF[+m.slice(5)-1]} ${m.slice(0,4)}</option>`).join('');$('fc').innerHTML='<option value="">Todos los tipos de contenido</option>'+CATS.map(c=>`<option>${c}</option>`).join('');st.m=st.c='';insights();draw()}
 $('fm').onchange=e=>{st.m=e.target.value;draw()};$('fc').onchange=e=>{st.c=e.target.value;draw()};$('q').oninput=e=>{st.q=e.target.value.toLowerCase();table(filt())};$('rf').onclick=load;
+async function getCSV(){const t0='&t='+Date.now(),P=['https://api.allorigins.win/raw?url=','https://corsproxy.io/?url=','https://api.codetabs.com/v1/proxy/?quest='].map(x=>x+encodeURIComponent(SHEET+t0)),L=[SHEET,SHEET+t0,...P];let err='';
+ for(const u of L){try{const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);const d=fromCSV(await r.text());if(d.length)return{d,via:L.indexOf(u)<2?'Google Sheets':'Google Sheets (vía proxy)'};err='la hoja llegó vacía o sin el formato esperado'}catch(e){err=e.message||'bloqueado por el navegador'}}throw new Error(err)}
 async function load(){const s=$('st');s.style.setProperty('--c','#f2b705');s.textContent='Conectando con Google Sheets…';
- try{const r=await fetch(SHEET+'&t='+Date.now());if(!r.ok)throw 0;const d=fromCSV(await r.text());if(!d.length)throw 0;D=d;s.style.setProperty('--c','#0a7d3e');s.textContent='En vivo · Google Sheets · '+new Date().toLocaleTimeString('es-PE',{hour:'2-digit',minute:'2-digit'})}
- catch(e){D=BACKUP.map(r=>mk(r[0],'https://www.tiktok.com/@mel.falca0/video/'+r[1],r[9],r[2],r[3],r[4],r[5],r[6],r[7],r[8]));s.style.setProperty('--c','#c0392b');s.textContent='Copia de respaldo (no se pudo leer la hoja)'}
+ try{const r=await getCSV();D=r.d;s.style.setProperty('--c','#0a7d3e');s.textContent='En vivo · '+r.via+' · '+new Date().toLocaleTimeString('es-PE',{hour:'2-digit',minute:'2-digit'})}
+ catch(e){D=BACKUP.map(r=>mk(r[0],'https://www.tiktok.com/@mel.falca0/video/'+r[1],r[9],r[2],r[3],r[4],r[5],r[6],r[7],r[8]));s.style.setProperty('--c','#c0392b');s.textContent='Copia de respaldo · no se pudo leer la hoja ('+e.message+')'}
  setup()}
+$('fl').onchange=async e=>{const f=e.target.files[0];if(!f)return;const d=fromCSV(await f.text());if(!d.length)return alert('El CSV no tiene el formato esperado');D=d;$('st').style.setProperty('--c','#0a7d3e');$('st').textContent='CSV cargado manualmente · '+f.name;setup()};
 const rank=(a,k,sub)=>{const t=top(a,k),mx=t[0]?t[0][k]:1;return '<ol class="r">'+t.map((d,i)=>`<li><a href="${d.url}" target="_blank" rel="noopener"><b>${i+1}.</b> ${d.tx}</a><div class="m">${dl(d.date)} · <b>${n(d[k])}</b> ${sub(d)}</div><div class="bar"><i style="width:${d[k]/mx*100}%"></i></div></li>`).join('')+'</ol>'};
 function hb(el,items,fmt){const mx=Math.max(...items.map(i=>i.v),1);$(el).innerHTML=items.map(i=>`<div class="hb"><span>${i.l}</span><span class="t"><i style="width:${i.v/mx*100}%;background:${i.c||'var(--g)'}"></i></span><b>${fmt(i.v)}</b></div>`).join('')}
 function draw(){const a=filt();$('sub').textContent=a.length?`@mel.falca0 · ${dl(a[0].date)} – ${dl(a[a.length-1].date)} de ${a[0].date.slice(0,4)} · ${a.length} de ${D.length} publicaciones en vista`:'Sin datos para este filtro';
