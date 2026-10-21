@@ -38,25 +38,36 @@ footer{margin-top:48px;font-size:12px;color:var(--mid);max-width:900px}
 body.pres .side,body.pres #detalle,body.pres footer{display:none}body.pres .app{grid-template-columns:1fr}body.pres .lead{font-size:24px}body.pres .big{font-size:64px}
 @media(max-width:900px){.app{grid-template-columns:1fr;padding:12px}.side{position:static;max-height:none}.hb{grid-template-columns:110px 1fr 56px}.c2{grid-template-columns:1fr}}
 @media print{.side{display:none}.app{display:block}}
+.brand img{max-width:100%;max-height:60px;width:auto;height:auto;display:block}
+.hero{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}.ph{width:210px;aspect-ratio:4/5;border-radius:24px;overflow:hidden;background:var(--paper);border:1px solid var(--line);box-shadow:var(--sh)}.ph img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.gl{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:16px;padding:20px;background:var(--alt);border-radius:24px}.gl b{display:block;font-weight:600;margin-bottom:2px}.gl span{color:var(--mid)}
+.nm{display:flex;align-items:baseline;gap:10px;margin:0 0 12px}.nm b{font-size:36px;font-weight:600;letter-spacing:-.025em;line-height:1.1}.nm span{color:var(--mid);font-size:13px;line-height:1.3}
+.ins h3{font-size:18px;line-height:1.3;margin:10px 0 8px}.ins .hb{grid-template-columns:105px 1fr auto;font-size:12px;margin:6px 0}.ins .lb{margin:14px 0 2px}.ins p{font-size:14px;line-height:1.5}
+.md{position:fixed;inset:0;background:rgba(10,10,10,.5);display:none;align-items:center;justify-content:center;padding:16px;z-index:50}.md.on{display:flex}
+.mb{background:var(--paper);border-radius:24px;max-width:880px;width:100%;max-height:94vh;overflow:auto;display:grid;grid-template-columns:325px 1fr;gap:24px;padding:20px;position:relative}.mb iframe{width:325px;height:575px;border:0;border-radius:18px;background:var(--canvas)}
+.x{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:18px;border:0;background:var(--canvas);cursor:pointer;font-size:16px}
+.ms{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}.sb{background:var(--canvas);border-radius:18px;padding:10px 14px}.sb small{display:block;font-size:12px;color:var(--mid)}.sb b{font-size:22px;font-weight:600;letter-spacing:-.02em}.sb i{display:block;font-style:normal;font-size:12px;color:var(--mid)}
+.ob{display:inline-flex;align-items:center;height:36px;padding:0 16px;border-radius:18px;background:var(--ink);color:var(--alt);text-decoration:none;font-weight:500}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.ph{width:140px;order:-1}.mb{grid-template-columns:1fr;padding:16px}.mb iframe{width:100%;height:520px}}
 </style>
 </head>
 <body>
 <div class="app">
 <aside class="side">
  <div class="brand"><img src="progresemos.png" alt="Progresemos" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Progresemos'}))"></div>
- <div class="who"><img id="cand" src="melfalcao.png" alt="" onerror="this.style.display='none'"><div><b>Mel Vilcahuaman</b><span>@mel.falca0 · TikTok</span></div></div>
- <nav><a href="#resumen">Resumen</a><a href="#preguntas">Las 6 preguntas</a><a href="#hallazgos">Hallazgos</a><a href="#patrones">Patrones</a><a href="#detalle">Detalle</a></nav>
+  <nav><a href="#resumen">Resumen</a><a href="#preguntas">Las 6 preguntas</a><a href="#hallazgos">Hallazgos</a><a href="#patrones">Patrones</a><a href="#detalle">Detalle</a></nav>
  <div><div class="lab" style="margin-bottom:6px">Filtros</div><div style="display:grid;gap:8px"><select id="fm"></select><select id="fc"></select></div></div>
  <div style="display:grid;gap:8px"><button class="btn" onclick="document.body.classList.toggle('pres')">Modo clase (pantalla limpia)</button><button class="btn g" id="rf">↻ Actualizar datos</button><button class="btn o" onclick="document.getElementById('fl').click()">Cargar CSV</button><input type="file" id="fl" accept=".csv,text/csv" hidden></div>
  <div class="st" id="st">Conectando con Google Sheets…</div>
 </aside>
 <main>
- <div class="crumb">Progresemos <span>/</span> Monitor TikTok <span>/</span> <b>Resumen</b></div>
+ <div class="hero"><div><div class="crumb">Progresemos <span>/</span> Monitor TikTok <span>/</span> <b>Resumen</b></div>
  <h1>Mel Vilcahuaman en TikTok</h1>
- <p class="lead" id="lead"></p><div class="sub" id="sub">Cargando…</div>
- <section id="resumen" style="margin-top:24px"><div class="grid k" id="kpi"></div></section>
- <section id="preguntas"><h2>Las 6 preguntas, respondidas</h2><p class="hint">Todos los meses juntos. Cada texto abre el video en TikTok.</p><div class="grid c3" id="ans"></div></section>
- <section id="hallazgos"><h2>Hallazgos importantes</h2><p class="hint">Calculados sobre todo el periodo. «Qué significa» explica el dato y «Qué hacer» propone una acción.</p><div class="grid c3" id="ins"></div></section>
+ <p class="lead" id="lead"></p><div class="sub" id="sub">Cargando…</div></div>
+ <div class="ph"><img id="cand" src="melfalcao.png" alt="Mel Vilcahuaman" onerror="this.parentNode.style.display='none'"></div></div>
+ <section id="resumen" style="margin-top:24px"><div class="grid k" id="kpi"></div><div class="gl"><div><b>Interacción</b><span>Suma de reacciones (me gusta), comentarios y compartidos de un video.</span></div><div><b>Tasa de interacción</b><span>Interacciones ÷ reproducciones: qué parte de quienes vieron el video reaccionó.</span></div><div><b>Mediana</b><span>El valor del video «típico»: la mitad de los videos tiene más y la otra mitad menos.</span></div></div></section>
+ <section id="preguntas"><h2>Las 6 preguntas, respondidas</h2><p class="hint">Todos los meses juntos. Haz clic en un video para verlo aquí mismo.</p><div class="grid c3" id="ans"></div></section>
+ <section id="hallazgos"><h2>Hallazgos importantes</h2><p class="hint">Calculados sobre todo el periodo. Cada tarjeta muestra el dato, un gráfico simple y cómo interpretarlo.</p><div class="grid c3" id="ins"></div></section>
  <section id="patrones"><h2>Evolución y patrones</h2><p class="hint">Cada barra es un video; pasa el cursor para ver el detalle.</p>
   <div class="card"><h3>Interacciones por publicación (orden cronológico)</h3><div class="tl" id="tl"></div><div class="ax" id="ax"></div><div class="lg" id="lg"></div></div>
   <div class="grid c2" style="margin-top:16px"><div class="card"><h3>Promedio de interacciones por tipo de contenido</h3><div id="bc"></div></div><div class="card"><h3>Promedio por franja horaria</h3><div id="bh"></div><h3 style="margin-top:20px">Promedio por día de la semana</h3><div id="bd"></div></div></div></section>
@@ -64,12 +75,13 @@ body.pres .side,body.pres #detalle,body.pres footer{display:none}body.pres .app{
  <footer><b>Notas.</b> Fuente única: Google Sheets publicado como CSV, leído en vivo al abrir la página (no hay datos guardados en el código). Interacciones = reacciones + comentarios + compartidos. Tasa de interacción = interacciones ÷ reproducciones. El tipo de contenido se asigna automáticamente por palabras clave y es una aproximación. La columna «Engagement» de la hoja no se usa.</footer>
 </main></div>
 
+<div class="md" id="md"><div class="mb"><button class="x" onclick="closeV()" aria-label="Cerrar">✕</button><div class="mv"><iframe id="fr" allow="encrypted-media; fullscreen" allowfullscreen></iframe></div><div id="mi"></div></div></div>
 <script>
 const SHEET='https://docs.google.com/spreadsheets/d/e/2PACX-1vQ6DU572IUrtlCcjSprrpk-yhgh3w8w_PiFhLYUDpjTFyQQPxxdRqSq5AZGFt7r7SVPD8wTGkXpDDgf/pub?output=csv';
 const RULES=[['Fe y familia',/madre|viejita|mamá|dios|bendici/],['Retos y entretenimiento',/\breto\b|\bvs\b|fútbol|universitario|trinchera/],['Contra el abuso / corrupción',/abuso|corrupt|ya tuvieron|robar/],['Propuestas y sectores',/propuesta|drones|emprendedor|transportista|trabajador|vaso de leche|cultura|iglesia|seguridad|agua/],['Llamado al voto (el perrito)',/perrito|perro|marca|votar|encuesta/]];
 const CATS=[...RULES.map(r=>r[0]),'Recorrido barrial / otros'];const COL=['#0a7d3e','#34a46a','#86cfa3','#0a0a0a','#737373','#c4c4c4'];const cc=c=>COL[CATS.indexOf(c)%6];
 const catOf=t=>{t=(t||'').toLowerCase();for(const[n,r]of RULES)if(r.test(t))return n;return CATS[5]};
-const mk=(id,url,tx,date,min,re,co,sh,it,vw)=>{const cat=catOf(tx);tx=(tx||'').split(' | ')[0].replace(/\s+/g,' ').trim();return{id,url,tx:(tx.slice(0,70)||'(sin texto)'),date,min,re,co,sh,it:it||re+co+sh,vw,cat,rate:vw?(it||re+co+sh)/vw*100:0}};
+const mk=(id,url,tx,date,min,re,co,sh,it,vw)=>{const cat=catOf(tx);tx=(tx||'').split(' | ')[0].replace(/\s+/g,' ').trim();return{id,url,vid:(url||'').split('?')[0].split('/').pop(),full:tx||'(sin texto)',tx:(tx.slice(0,70)||'(sin texto)'),date,min,re,co,sh,it:it||re+co+sh,vw,cat,rate:vw?(it||re+co+sh)/vw*100:0}};
 let D=[];
 function parseCSV(t){const R=[];let r=[],f='',q=false;for(let i=0;i<t.length;i++){const c=t[i];if(q){if(c=='"'){if(t[i+1]=='"'){f+='"';i++}else q=false}else f+=c}else if(c=='"')q=true;else if(c==','){r.push(f);f=''}else if(c=='\n'||c=='\r'){if(c=='\r'&&t[i+1]=='\n')i++;r.push(f);f='';if(r.length>1||r[0]!=='')R.push(r);r=[]}else f+=c}if(f!==''||r.length){r.push(f);R.push(r)}return R}
 const nm=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z]/g,''),num=s=>parseInt(String(s||'').replace(/\D/g,''))||0;
@@ -89,7 +101,7 @@ async function load(){const s=$('st');s.style.setProperty('--c','#a3a3a3');s.tex
  catch(e){D=[];s.style.setProperty('--c','#e7000b');s.textContent='No se pudo leer la hoja ('+(e.message||'bloqueado por el navegador')+'). Revisa que esté publicada o usa «Cargar CSV».'}
  setup()}
 $('fl').onchange=async e=>{const f=e.target.files[0];if(!f)return;const d=fromCSV(await f.text());if(!d.length)return alert('El CSV no tiene el formato esperado');D=d;$('st').style.setProperty('--c','#0a7d3e');$('st').textContent='CSV cargado manualmente · '+f.name;setup()};
-const rank=(a,k,sub)=>{const t=topN(a,k),mx=t[0]?t[0][k]:1;return '<ol class="r">'+t.map((d,i)=>`<li><a href="${d.url}" target="_blank" rel="noopener"><b>${i+1}.</b> ${d.tx}</a><div class="m">${dl(d.date)} · <b>${n(d[k])}</b> ${sub(d)}</div><div class="bar"><i style="width:${d[k]/mx*100}%"></i></div></li>`).join('')+'</ol>'};
+const rank=(a,k,sub)=>{const t=topN(a,k),mx=t[0]?t[0][k]:1;return '<ol class="r">'+t.map((d,i)=>`<li><a href="${d.url}" data-v="${d.vid}"><b>${i+1}.</b> ${d.tx}</a><div class="m">${dl(d.date)} · <b>${n(d[k])}</b> ${sub(d)}</div><div class="bar"><i style="width:${d[k]/mx*100}%"></i></div></li>`).join('')+'</ol>'};
 function hb(el,items,fmt){const mx=Math.max(...items.map(i=>i.v),1);$(el).innerHTML=items.map(i=>`<div class="hb"><span>${i.l}</span><span class="t"><i style="width:${i.v/mx*100}%;background:${i.c||'var(--g)'}"></i></span><b>${fmt(i.v)}</b></div>`).join('')}
 function draw(){const a=filt();$('sub').textContent=a.length?`@mel.falca0 · ${dl(a[0].date)} – ${dl(a[a.length-1].date)} de ${a[0].date.slice(0,4)} · ${a.length} de ${D.length} publicaciones en vista`:'Sin datos para este filtro';
  if(!a.length){['lead','kpi','ans','tl','bc','bh','bd','tb'].forEach(i=>$(i).innerHTML='');return}
@@ -102,7 +114,7 @@ function draw(){const a=filt();$('sub').textContent=a.length?`@mel.falca0 · ${d
  ['3 · Videos con más visualizaciones',rank(a,'vw',()=>'reprod.')],['4 · Videos con más interacciones',rank(a,'it',d=>`interac. · ${p(d.rate)} de sus vistas`)],
  ['5 · Contenido más compartido',rank(a,'sh',d=>`compartidos · ${p(d.sh/d.vw*100,2)} de sus vistas`)],['6 · Contenido con más comentarios',rank(a,'co',d=>`comentarios · ${p(d.co/d.vw*100,2)} de sus vistas`)]];
  $('ans').innerHTML=R.map(r=>`<div class="card"><span class="q">Pregunta ${r[0][0]}</span><h3>${r[0].slice(4)}</h3>${r[1]}</div>`).join('');
- const mx=Math.max(...a.map(d=>d.it));$('tl').innerHTML=a.map(d=>`<div style="height:${Math.max(d.it/mx*100,1.5)}%;background:${cc(d.cat)}" title="${dl(d.date)} · ${d.cat}&#10;${n(d.it)} interacciones · ${n(d.vw)} reprod.&#10;${d.tx}" onclick="window.open('${d.url}')"></div>`).join('');
+ const mx=Math.max(...a.map(d=>d.it));$('tl').innerHTML=a.map(d=>`<div style="height:${Math.max(d.it/mx*100,1.5)}%;background:${cc(d.cat)}" title="${dl(d.date)} · ${d.cat}&#10;${n(d.it)} interacciones · ${n(d.vw)} reprod.&#10;${d.tx}" data-v="${d.vid}"></div>`).join('');
  $('ax').innerHTML=`<span>${dl(a[0].date)}</span><span>${dl(a[a.length>>1].date)}</span><span>${dl(a[a.length-1].date)}</span>`;$('lg').innerHTML=CATS.map(c=>`<span style="--c:${cc(c)}">${c}</span>`).join('');
  const g=CATS.map(c=>({l:c,v:avg(a.filter(d=>d.cat==c),'it'),c:cc(c),k:a.filter(d=>d.cat==c).length})).filter(x=>x.k).sort((x,y)=>y.v-x.v);hb('bc',g.map(x=>({...x,l:`${x.l} (${x.k})`})),n);
  hb('bh',FR.map(f=>({l:f[0],v:avg(a.filter(d=>d.min/60>=f[1]&&d.min/60<f[2]),'it')})),n);hb('bd',WD.map((w,i)=>({l:w,v:avg(a.filter(d=>wd(d.date)==i),'it')})),n);table(a)}
@@ -110,20 +122,47 @@ const COLS=[['date','Fecha'],['min','Hora'],['cat','Tipo'],['tx','Texto'],['vw',
 $('th').innerHTML=COLS.map(c=>`<th data-k="${c[0]}">${c[1]}</th>`).join('');
 $('th').onclick=e=>{const k=e.target.dataset.k;if(!k)return;st.sd=st.sk==k?-st.sd:-1;st.sk=k;table(filt())};
 function table(a){a=a.filter(d=>!st.q||(d.tx+d.cat).toLowerCase().includes(st.q));const k=st.sk,s=st.sd;a=[...a].sort((x,y)=>(x[k]>y[k]?1:x[k]<y[k]?-1:0)*s);
- $('tb').innerHTML=a.map(d=>`<tr><td>${dl(d.date)}</td><td>${String(d.min/60|0).padStart(2,'0')}:${String(d.min%60).padStart(2,'0')}</td><td><span class="pill"><i style="background:${cc(d.cat)}"></i>${d.cat}</span></td><td class="tx"><a href="${d.url}" target="_blank" rel="noopener" style="color:inherit">${d.tx}</a></td><td>${n(d.vw)}</td><td>${n(d.re)}</td><td>${n(d.co)}</td><td>${n(d.sh)}</td><td><b>${n(d.it)}</b></td><td>${p(d.rate,2)}</td></tr>`).join('')}
-function insights(){const I=sum(D,'it'),V=sum(D,'vw'),t10=topN(D,'it',10),sh=[...D].sort((x,y)=>y.sh/y.vw-x.sh/x.vw)[0],cs=CATS.map(c=>({c,v:avg(D.filter(d=>d.cat==c),'it'),k:D.filter(d=>d.cat==c).length})).filter(x=>x.k).sort((x,y)=>y.v-x.v);
- const by={};D.forEach(d=>(by[d.date]=by[d.date]||[]).push(d));const bd=Object.entries(by).sort((x,y)=>y[1].length-x[1].length)[0],low=bd[1].filter(d=>d.it<med(D,'it')).length;
- const zero=D.filter(d=>d.co==0&&d.re>1000),fr=FR.map(f=>({l:f[0],v:avg(D.filter(d=>d.min/60>=f[1]&&d.min/60<f[2]),'it')})).filter(x=>!isNaN(x.v)).sort((x,y)=>y.v-x.v);
- const last=D[D.length-1].date,lim=new Date(new Date(last).getTime()-4*864e5).toISOString().slice(0,10),fin=D.filter(d=>d.date>=lim),vir=D.filter(d=>d.it>10000);
- const X=[[p(sum(t10,'it')/I*100,0),`${n(t10.length)} videos concentran ese porcentaje de las interacciones`,`Son el ${p(10/D.length*100,0)} de las publicaciones. La mediana (${n(med(D,'it'))}) está muy por debajo del promedio (${n(avg(D,'it'))}): los virales elevan el promedio.`,'Reportar siempre la mediana junto al promedio y estudiar qué tienen en común los videos líderes.'],
- [n(cs[0].v),`«${cs[0].c}» es el contenido más rentable`,`Promedia ${n(cs[0].v)} interacciones por video (${cs[0].k} piezas), ${(cs[0].v/avg(D,'it')).toFixed(1).replace('.',',')}× el promedio general; «${cs[cs.length-1].c}» rinde ${n(cs[cs.length-1].v)}. Puede influir el momento (cierre de campaña) y no solo el tema.`,'Priorizar contenido personal y emotivo en hitos clave y reducir piezas de recorrido genérico.'],
- [p(sh.sh/sh.vw*100,2),'Lo más compartido no es lo más visto',`«${sh.tx.slice(0,48)}…» (${dl(sh.date)}) logró ${n(sh.sh)} compartidos con ${n(sh.vw)} reproducciones: la mayor tasa de compartidos. Suele ser contenido con convocatoria o reto.`,'Incluir convocatorias concretas («comparte», fecha, lugar) para ampliar alcance orgánico.'],
- [`${bd[1].length} en 1 día`,`Saturación el ${dl(bd[0])}`,`Se publicaron ${bd[1].length} videos el mismo día y ${low} quedaron bajo la mediana, varios con minutos de diferencia. Publicar en ráfaga compite con uno mismo.`,'Espaciar publicaciones y reservar el mejor horario para la pieza principal.','w2'],
- [fr[0].l.split(' ')[0],`Mejor franja: ${fr[0].l}`,`Promedia ${n(fr[0].v)} interacciones por video frente a ${n(fr[fr.length-1].v)} en ${fr[fr.length-1].l.split(' ')[0].toLowerCase()}. Hay pocas publicaciones por franja: es tendencia, no regla.`,'Probar la franja líder con contenido comparable antes de fijarla como norma.','w2'],
- [p(sum(fin,'it')/I*100,0),'Peso de los últimos 5 días del periodo',`Entre el ${dl(lim)} y el ${dl(last)} (${fin.length} videos) se concentra ese porcentaje de todas las interacciones. ${vir.length} videos superaron las 10.000 interacciones.`,'Planificar desde el inicio un crescendo de contenido emotivo y de movilización hacia la fecha clave.'],
- [pn(sum(D,'co')/V*1000,1),'Comentarios por cada 1.000 vistas',`Reacciones: ${p(sum(D,'re')/I*100,0)} de las interacciones; comentarios: ${p(sum(D,'co')/I*100,1)}. ${zero.length?`${zero.length} video(s) con más de 1.000 reacciones tienen 0 comentarios (p. ej. ${dl(zero[0].date)}): posible comentarios desactivados o dato faltante.`:''}`,'Cerrar videos con preguntas directas («menciona tu barrio») y verificar que los comentarios estén activos.','w2'],
- [p(I/V*100,2),'Tasa de interacción sobre reproducciones',`Cada 100 reproducciones generan ~${pn(I/V*100,1)} interacciones. El mejor video llega a ${p(Math.max(...D.map(d=>d.rate)),1)} y el más bajo a ${p(Math.min(...D.map(d=>d.rate)),1)}.`,'Evaluar videos por esta tasa y no solo por vistas, que no miden resonancia.']];
- $('ins').innerHTML=X.map(x=>`<div class="card ins"><span class="bd ${x[4]?'w':''}">${x[4]?'Atención':'Hallazgo'}</span><div class="n">${x[0]}</div><h3>${x[1]}</h3><div class="lb">Qué significa</div><p>${x[2]}</p><div class="lb">Qué hacer</div><p>${x[3]}</p></div>`).join('')}
+ $('tb').innerHTML=a.map(d=>`<tr><td>${dl(d.date)}</td><td>${String(d.min/60|0).padStart(2,'0')}:${String(d.min%60).padStart(2,'0')}</td><td><span class="pill"><i style="background:${cc(d.cat)}"></i>${d.cat}</span></td><td class="tx"><a href="${d.url}" data-v="${d.vid}" style="color:inherit">${d.tx}</a></td><td>${n(d.vw)}</td><td>${n(d.re)}</td><td>${n(d.co)}</td><td>${n(d.sh)}</td><td><b>${n(d.it)}</b></td><td>${p(d.rate,2)}</td></tr>`).join('')}
+const hh=m=>String(m/60|0).padStart(2,'0')+':'+String(m%60).padStart(2,'0');
+function openV(v){const d=D.find(x=>x.vid==v);if(!d)return;$('fr').src='https://www.tiktok.com/embed/v2/'+d.vid;const rk=k=>[...D].sort((a,b)=>b[k]-a[k]).indexOf(d)+1;
+ $('mi').innerHTML=`<span class="pill"><i style="background:${cc(d.cat)}"></i>${d.cat}</span><h3 style="margin:12px 36px 4px 0;font-size:18px;line-height:1.35">${d.full}</h3><div class="mut">${dl(d.date)} · ${hh(d.min)}</div><div class="ms">${[['Reproducciones','vw'],['Interacciones','it'],['Compartidos','sh'],['Comentarios','co']].map(c=>`<div class="sb"><small>${c[0]}</small><b>${n(d[c[1]])}</b><i>puesto ${rk(c[1])} de ${D.length}</i></div>`).join('')}</div><p class="mut" style="margin:0 0 14px">Tasa de interacción: ${p(d.rate,2)} de sus vistas. Reacciones: ${n(d.re)}.</p><a class="ob" href="${d.url}" target="_blank" rel="noopener">Abrir en TikTok ↗</a><p class="mut" style="font-size:12px">Si el video no carga aquí, ábrelo en TikTok.</p>`;$('md').classList.add('on')}
+function closeV(){$('md').classList.remove('on');$('fr').src='about:blank'}
+document.addEventListener('click',e=>{const a=e.target.closest('[data-v]');if(a){e.preventDefault();openV(a.dataset.v)}else if(e.target.id=='md')closeV()});document.addEventListener('keydown',e=>{if(e.key=='Escape')closeV()});
+function insights(){const I=sum(D,'it'),V=sum(D,'vw'),md=med(D,'it'),av=avg(D,'it'),pc=x=>p(x,0),x1=x=>x.toFixed(1).replace('.',',');
+ const t10=topN(D,'it',10),s10=sum(t10,'it'),rest=D.length-t10.length;
+ const cs=CATS.map(c=>({c,v:avg(D.filter(d=>d.cat==c),'it'),k:D.filter(d=>d.cat==c).length})).filter(x=>x.k).sort((x,y)=>y.v-x.v),c0=cs[0],c1=cs[cs.length-1];
+ const sh=[...D].sort((x,y)=>y.sh/y.vw-x.sh/x.vw)[0],shr=sum(D,'sh')/V*100,shm=sh.sh/sh.vw*100;
+ const by={};D.forEach(d=>(by[d.date]=by[d.date]||[]).push(d));const bd=Object.entries(by).sort((x,y)=>y[1].length-x[1].length)[0],da=avg(bd[1],'it'),low=bd[1].filter(d=>d.it<md).length;
+ const fr=FR.map(f=>{const g=D.filter(d=>d.min/60>=f[1]&&d.min/60<f[2]);return{l:f[0].split(' ')[0],v:avg(g,'it'),k:g.length}}).filter(x=>x.k),f0=[...fr].sort((x,y)=>y.v-x.v)[0];
+ const last=D[D.length-1].date,first=D[0].date,days=Math.round((new Date(last)-new Date(first))/864e5)+1,lim=new Date(new Date(last).getTime()-4*864e5).toISOString().slice(0,10),fin=D.filter(d=>d.date>=lim),sf=sum(fin,'it');
+ const ot=avg(D.filter(d=>d.date!=bd[0]),'it'),ritmo=sf/I*100/(5/days*100);
+ const zero=D.filter(d=>d.co==0&&d.re>1000),rt=D.map(d=>d.rate),R=sum(D,'re'),C=sum(D,'co'),S=sum(D,'sh');
+ const X=[
+ {t:'Concentración',n:pc(s10/I*100),u:'de las interacciones vienen de solo 10 videos',h:`Solo 10 videos concentran el ${pc(s10/I*100)} de los resultados`,b:[['10 mejores videos',s10,n(s10)],[`Los otros ${rest}`,I-s10,n(I-s10)]],
+  a:`Entre todos los videos suman ${n(I)} interacciones. Los 10 con más interacciones aportan ${n(s10)}; los otros ${rest} juntos aportan ${n(I-s10)}.`,
+  r:`Un video «típico» logra unas ${n(md)} interacciones (la mediana), pero el promedio sube a ${n(av)} porque algunos videos muy exitosos lo jalan hacia arriba. Para saber cuánto rinde un video normal, conviene mirar la mediana.`},
+ {t:'Tipo de contenido',n:n(c0.v),u:'interacciones por video en promedio',h:`«${c0.c}» es el contenido que mejor rinde`,b:[[c0.c,c0.v,n(c0.v)],['Promedio general',av,n(av)],[c1.c,c1.v,n(c1.v)]],
+  a:`Agrupé los videos por tema según su texto. Los ${c0.k} videos de «${c0.c}» promedian ${n(c0.v)} interacciones, ${x1(c0.v/av)} veces el promedio general. El tema que menos rinde es «${c1.c}» (${n(c1.v)}).`,
+  r:`Parte del resultado puede deberse a cuándo se publicó cada video y no solo al tema. Como hay pocos videos por tema, es una señal para observar y no una regla.`},
+ {t:'Difusión',n:p(shm,2),u:'de las vistas de ese video terminaron en compartidos',h:'Lo más compartido no es lo más visto',b:[['Video más compartido',shm,p(shm,2)],['Promedio de todos',shr,p(shr,2)]],
+  a:`«${sh.tx.slice(0,50)}» (${dl(sh.date)}) tuvo ${n(sh.sh)} compartidos con ${n(sh.vw)} reproducciones: ${x1(shm/shr)} veces la tasa promedio de compartidos (${p(shr,2)}).`,
+  r:`Compartir es una señal fuerte de interés, porque la persona reenvía el video con su propio nombre. Un video puede tener muchas vistas y pocos compartidos, y otro con menos vistas moverse más entre la gente.`},
+ {t:'Frecuencia',n:String(bd[1].length),u:`videos publicados el ${dl(bd[0])}`,h:da<ot?`El día con más videos rindió menos por video que el resto`:`El día con más videos no rindió menos por video`,b:[[`Ese día (${dl(bd[0])})`,da,n(da)],['Los demás días',ot,n(ot)]],
+  a:`El ${dl(bd[0])} se publicaron ${bd[1].length} videos, varios con pocos minutos de diferencia, y promediaron ${n(da)} interacciones. Los videos de los demás días promedian ${n(ot)}. ${low} de los ${bd[1].length} quedaron por debajo de la mediana del periodo (${n(md)}).`,
+  r:da<ot?`Cuando salen varios videos casi a la vez, es posible que compitan entre sí por la misma audiencia y ninguno reciba toda la atención.`:`Publicar varios videos juntos no bajó el promedio ese día, aunque cada video individual rindió distinto. Conviene comparar con más días como este.`},
+ {t:'Horario',n:f0.l,u:'es la franja con más interacciones por video',h:`Los videos de la ${f0.l.toLowerCase()} rinden más`,hi:fr.indexOf(f0),b:fr.map(f=>[f.l,f.v,n(f.v)]),
+  a:`Promedio de interacciones por video según la hora de publicación: ${fr.map(f=>`${f.l.toLowerCase()} ${n(f.v)} (${f.k} videos)`).join(', ')}.`,
+  r:`Hay pocos videos en cada franja, así que es una tendencia y no una regla. Sirve para observar si el patrón se repite con más publicaciones.`},
+ {t:'Ritmo',n:pc(sf/I*100),u:'de las interacciones en los últimos 5 días',h:ritmo>1.2?'El final del periodo concentra la mayor atención':'El final del periodo pesó igual que el resto',b:[['% de los días',5/days*100,pc(5/days*100)],['% de interacciones',sf/I*100,pc(sf/I*100)]],
+  a:`Entre el ${dl(lim)} y el ${dl(last)} (5 de ${days} días) se publicaron ${fin.length} videos que reúnen ${n(sf)} interacciones. En todo el periodo, ${D.filter(d=>d.it>10000).length} videos superaron las 10.000 interacciones.`,
+  r:ritmo>1.2?`Una parte pequeña del tiempo reúne una parte grande de la atención: el interés de la audiencia crece hacia el final del periodo.`:`Las interacciones se reparten de forma parecida a lo largo del periodo.`},
+ {t:'Conversación',n:x1(C/V*1000),u:'comentarios por cada 1.000 reproducciones',h:'La gente reacciona mucho, pero comenta poco',b:[['Reacciones',R,pc(R/I*100)],['Compartidos',S,pc(S/I*100)],['Comentarios',C,pc(C/I*100)]],
+  a:`De cada 100 interacciones, ${pc(R/I*100).slice(0,-1)} son reacciones, ${pc(S/I*100).slice(0,-1)} compartidos y ${pc(C/I*100).slice(0,-1)} comentarios.${zero.length?` Además, ${zero.length} video(s) con más de 1.000 reacciones muestran 0 comentarios (por ejemplo el del ${dl(zero[0].date)}): puede que los comentarios estuvieran desactivados o que falte el dato.`:''}`,
+  r:`Reaccionar es un gesto rápido; comentar pide más esfuerzo. Por eso los comentarios suelen ser pocos, pero cada uno indica una conversación más profunda que un «me gusta».`},
+ {t:'Eficiencia',n:p(I/V*100,2),u:'de las reproducciones terminan en una interacción',h:`De cada 100 vistas, unas ${Math.round(I/V*100)} generan una interacción`,b:[['Mejor video',Math.max(...rt),p(Math.max(...rt),1)],['Promedio',I/V*100,p(I/V*100,1)],['Video más bajo',Math.min(...rt),p(Math.min(...rt),1)]],
+  a:`Cada 100 reproducciones generan en promedio ${x1(I/V*100)} interacciones. Según el video, la tasa va de ${p(Math.min(...rt),1)} a ${p(Math.max(...rt),1)}.`,
+  r:`Las vistas solas no dicen si el video gustó; la tasa sí. Un video con menos vistas pero con tasa alta conectó mejor con quienes lo vieron.`}];
+ $('ins').innerHTML=X.map(x=>{const mx=Math.max(...x.b.map(b=>b[1]),1);return `<div class="card ins"><span class="bd">${x.t}</span><h3>${x.h}</h3><div class="nm"><b>${x.n}</b><span>${x.u}</span></div>${x.b.map((b,i)=>`<div class="hb"><span>${b[0]}</span><span class="t"><i style="width:${b[1]/mx*100}%;background:${i==(x.hi||0)?'var(--g)':'#a3a3a3'}"></i></span><b>${b[2]}</b></div>`).join('')}<div class="lb">Lo que muestran los datos</div><p>${x.a}</p><div class="lb">Cómo interpretarlo</div><p>${x.r}</p></div>`}).join('')}
 load();
 </script>
 </body>
